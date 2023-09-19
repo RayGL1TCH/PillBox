@@ -24,6 +24,17 @@ body{
   }
   button{
   height:50px;	
+
+  }
+  .submit-button {
+    color: #ffffff !important; 
+    background-color: #105240 !important; 
+    border: 2px solid #105240 !important; 
+    transition: background-color 0.3s, color 0.3s; 
+  }
+  
+  .submit-button:hover {
+    background-color: #0d3c1f !important; 
   }
   .sideline:before,
   .sideline:after {
@@ -38,4 +49,16 @@ body{
   }
   .container {
     margin-bottom: 0%;
+  }
+  .logo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+   text-align: left;
+   
+  }
+  
+  .logo img {
+    margin-right: 100px;
+    max-width: 100px; 
   }

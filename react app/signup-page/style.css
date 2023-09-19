@@ -24,7 +24,19 @@ body{
     }
     button{
     height:50px;	
+    color: #105240;
     }
+    .submit-button {
+        color: #ffffff !important; 
+        background-color: #105240 !important; 
+        border: 2px solid #105240 !important; 
+        transition: background-color 0.3s, color 0.3s; 
+      }
+      
+      .submit-button:hover {
+        background-color: #0d3c1f !important; 
+      }
+      
     .sideline:before,
     .sideline:after {
         content: '';
@@ -36,4 +48,16 @@ body{
     .sideline:after {
         margin: 0 0 0 20px;
     }
-  
+    .logo {
+        display: flex;
+        justify-content: space-between; /* Center horizontally */
+        align-items: center; /* Center vertically */
+       text-align: left;
+       
+      }
+      
+      /* Additional styles for the logo image */
+      .logo img {
+        margin-right: 100px;
+        max-width: 100px; /* Adjust the width as needed */
+      }
