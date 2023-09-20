@@ -1,91 +1,52 @@
-import { initializeApp } from "firebase/app";
-import { getAuth,GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-import {
-    getDatabase,
-    ref,
-    set,
-   
-} from "firebase/database";
+// Your Firebase configuration
 
-
-const firebaseConfig = {
-    apiKey: "AIzaSyB2NsXCbCBttgEaFUUDPipFYA17tRbhGLE",
-    authDomain: "pillbox-7ebe9.firebaseapp.com",
-    projectId: "pillbox-7ebe9",
-    storageBucket: "pillbox-7ebe9.appspot.com",
-    messagingSenderId: "292374776797",
-    appId: "1:292374776797:web:a6f57c5c3770312074c434",
-    measurementId: "G-R7R45WB6BB"
-};
-
+    const firebaseConfig = {
+        apiKey: "AIzaSyChxFBB_GZxpTvee8YCDPKuoR2qKuy7f1w",
+        authDomain: "pillbox2-bd85a.firebaseapp.com",
+        projectId: "pillbox2-bd85a",
+        storageBucket: "pillbox2-bd85a.appspot.com",
+        messagingSenderId: "909255190762",
+        appId: "1:909255190762:web:4684785cade65ae6674f93"
+    
+  };
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const provider = new GoogleAuthProvider();
-const db = getDatabase(app);
+
+const auth = getAuth(app);
+const database = getDatabase(app);
 
 const registerBtn = document.getElementById('register-button');
-const loginBtn = document.getElementById('login-button');
 
 registerBtn.addEventListener('click', function (event) {
     event.preventDefault();
     const firstName = document.getElementById('first-name').value;
     const lastName = document.getElementById('last-name').value;
     const email = document.getElementById('email').value;
-    const newPassword = document.getElementById('new-password');
-    const confirmPassword = document.getElementById('confirm-password');
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
 
-
-
-
-    
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-
-                const reference = ref(db, "users/" + user.uid);
-                // window.alert("User registered successfully");
-                set(reference, {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    newPassword: newPassword,
-                    confirmPassword: confirmPassword,
-                   
-                  
-                })
-                    // .fire
-
-
-            }).catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode + " " + errorMessage);
-                window.alert("Error: " + errorMessage);
-            });
-    
+    createUserWithEmailAndPassword(auth, email, newPassword)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const reference = ref(database, "users/" + user.uid);
+            set(reference, {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                newPassword: newPassword,
+                confirmPassword: confirmPassword,
+            })
+            console.log(user);
+            alert("Your account has been created!");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+        });
 });
-
-// loginBtn.addEventListener('click', function (event) {
-//     event.preventDefault();
-//     signInWithPopup(auth, provider)
-//         .then((result) => {
-//             const credential = GoogleAuthProvider.credentialFromResult(result);
-//             const token = credential.accessToken;
-//             const user = result.user;
-//             window.alert("Welcome Back!");
-//             window.location.href = "./../index.html";
-//         }).catch((error) => {
-//             const errorCode = error.code;
-//             const errorMessage = error.message;
-//             console.log(errorCode + " " + errorMessage);
-//             window.alert("Error: " + errorMessage);
-//         });
-// });
-
-
-
-// //validate functions
