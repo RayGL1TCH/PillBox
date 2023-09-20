@@ -3,8 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebas
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-// Your Firebase configuration
-
     const firebaseConfig = {
         apiKey: "AIzaSyChxFBB_GZxpTvee8YCDPKuoR2qKuy7f1w",
         authDomain: "pillbox2-bd85a.firebaseapp.com",
@@ -14,7 +12,6 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.1
         appId: "1:909255190762:web:4684785cade65ae6674f93"
     
   };
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
