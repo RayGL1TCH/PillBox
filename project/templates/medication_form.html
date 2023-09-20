@@ -2,31 +2,51 @@
 
 {% block content %}
   <form class="box" method="POST" action="{{ url_for('main.medication_form') }}">
-    <div class="field">
-      <label class="label">Medication 1 Time</label>
-      <div class="control">
-        <input class="input" type="time" name="medication1_time" required>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Medication 1</label>
       </div>
-    </div>
-    <div class="field">
-        <label class="label">Gap (in days) between doses</label>
-        <div class="control">
-          <input class="input" type="number" name="gap_days1" min="0" required>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" name="medication1_name" placeholder="Name" required>
+          </div>
         </div>
-    </div>
-    <div class="field">
-      <label class="label">Medication 2 Time</label>
-      <div class="control">
-        <input class="input" type="text" name="medication2_time" required>
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" name="medication1_time" placeholder="Time" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input class="input" type="number" name="gap_days1" min="0" placeholder="Gap between doses" required>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="field">
-      <label class="label">Gap (in days) between doses</label>
-      <div class="control">
-        <input class="input" type="number" name="gap_days2" min="0" required>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Medication 2</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" name="medication2_name" placeholder="Name" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" name="medication2_time" placeholder="Time" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input class="input" type="number" name="gap_days2" min="0" placeholder="Gap between doses" required>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="field">
+    <div class="field is-grouped">
       <div class="control">
         <button class="button is-primary" type="submit">Submit</button>
       </div>
