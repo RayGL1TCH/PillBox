@@ -58,6 +58,14 @@ def medication_form():
         return "Form submitted successfully!"  # You can replace this with a redirect or render_template
     return render_template('medication_form.html')
 
+@main.route('/device_data/<int:user_id>', methods=['GET'])
+def device_data(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user.device_data is None:
+        return "No data"
+    else:
+        return user.device_data
+
 app = Flask(__name__)
 app.register_blueprint(main)
 app.static_folder = 'static'
