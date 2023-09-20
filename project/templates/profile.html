@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="title">Profile Page</h1>
+  <h2 class="subtitle">Welcome, {{ name }}!</h2>
+  
+  <h2 class="subtitle">Medication Schedule:</h2>
+  
+  <form action="{{ url_for('main.update_schedule') }}" method="post">
+    {% for day, times in device_data.items() %}
+      <h3>{{ day }}</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Medication A</th>
+            <th>Medication B</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for time, medication in times.items() %}
+            <tr>
+              <td>{{ time }}</td>
+              <td><input type="text" name="{{ day }}-{{ time }}-A" value="{{ medication.A }}"></td>
+              <td><input type="text" name="{{ day }}-{{ time }}-B" value="{{ medication.B }}"></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+    <button class="button is-primary" type="submit">Save Schedule</button>
+  </form>
+{% endblock %}
