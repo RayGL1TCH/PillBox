@@ -6,6 +6,19 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.layer {
+  background-color: rgba(16, 82, 64, 0.6);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.content {
+  z-index: 1;
+}
 header
 {
   position: absolute;
@@ -25,8 +38,8 @@ header img
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 200px;
+  max-height: 100px;
 }
 .toggle
 {
@@ -57,7 +70,10 @@ header img
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #105240;
+  background:url("../static/background.jpg"), #105240;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   transition: 0.5s;
   z-index: 2;
 }
@@ -102,7 +118,7 @@ header img
 }
 .text h3
 {
-  font-size: 1.5em;
+  font-size: 4em;
   font-weight: 700;
   color: #fff;
   line-height: 1em;
