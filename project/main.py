@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, send_file, request
 from flask_login import login_required, current_user
-from datetime import datetime
+from datetime import datetime,date
 from .models import User
 from . import db
 import json
@@ -27,7 +27,7 @@ def medication_form():
         medication2_time = request.form.get('medication2_time').split(',')
         gap_days1 = request.form.get('gap_days1')
         gap_days2 = request.form.get('gap_days2')
-        todays_date = datetime.utcnow().isoformat()
+        todays_date = date.today().isoformat()
         my_json = {
             "medication1": {
                 "name": medication1_name,
