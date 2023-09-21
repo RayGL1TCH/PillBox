@@ -1,0 +1,83 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+    html {
+        font-family: Arial, sans-serif;
+        background: whitesmoke;
+        text-align: center;
+        margin: 0;
+       
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .button-container {
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 35vh;
+        
+    }
+
+    button {
+        font-size: 24px;
+        padding: 15px 30px;
+        margin: 10px;
+        background-color: #105240;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #105240;
+        color: whitesmoke !important;
+    }
+    img {
+        margin-top: 100px;
+        width:450px;
+        height: 296px;
+        
+    }
+   
+ 
+    
+
+    </style>
+    <title>Button Redirects</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome user</h1>
+    </header>
+    <div class="background-image">
+    <img src="../static/3d-model.png" alt="transparent-3d-model">
+    <div class="button-container">
+        <a href="medication_form"><button id="button1" class="button is-rounded is-large">Change Schedule</button></a>
+        <button id="button2" class="button is-rounded is-large">Data Report</button>
+    </div>
+</div>
+
+
+</body>
+</html> -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="background-image">
+    <img src="../static/3d-model.png" alt="transparent-3d-model" style="width: 300px; height: 198px;">
+    <br><br><br>
+    <div class="button-container">
+        <a href="medication_form"><button id="button1" class="button is-rounded is-large">Change Schedule</button></a>
+        <button id="button2" class="button is-rounded is-large">Data Report</button>
+    </div>
+</div>
+{% endblock %}
