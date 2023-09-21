@@ -15,7 +15,9 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    # return render_template('profile.html', name=current_user.name)
+    return render_template('dashboard.html', name=current_user.name)
+    # return send_file('templates/dashboard.html')
 
 @main.route('/medication_form', methods=['GET', 'POST'])
 @login_required
@@ -53,9 +55,7 @@ def medication_form():
         user = User.query.filter_by(id=current_user.id).first()
         user.device_data = json.dumps(my_json)
         db.session.commit()
-        # Process the form data as needed
-        # You can save it to the database, perform calculations, etc.
-        return "Form submitted successfully!"  # You can replace this with a redirect or render_template
+        return render_template('dashboard.html', name=current_user.name)
     return render_template('medication_form.html')
 
 @main.route('/device_data/<int:user_id>', methods=['GET'])

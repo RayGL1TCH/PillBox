@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,11 +61,23 @@
     <div class="background-image">
     <img src="../static/3d-model.png" alt="transparent-3d-model">
     <div class="button-container">
-        <button id="button1" class="button is-rounded is-large">Change Schedule</button>
+        <a href="medication_form"><button id="button1" class="button is-rounded is-large">Change Schedule</button></a>
         <button id="button2" class="button is-rounded is-large">Data Report</button>
     </div>
 </div>
 
 
 </body>
-</html>
+</html> -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="background-image">
+    <img src="../static/3d-model.png" alt="transparent-3d-model" style="width: 300px; height: 198px;">
+    <br><br><br>
+    <div class="button-container">
+        <a href="medication_form"><button id="button1" class="button is-rounded is-large">Change Schedule</button></a>
+        <button id="button2" class="button is-rounded is-large">Data Report</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,10 +1,12 @@
 from urllib.request import urlopen
 import datetime
 from datetime import datetime, date
+from os import system
 import datetime
 import serial
 import time
 import json
+
 
 ser = serial.Serial('/dev/cu.usbmodem101', 9600)
 
@@ -28,22 +30,22 @@ def get_current_day():
 def open_a():
     preprocess_hack('1')
     print('Sent command: 1')
-    time.sleep(1)
+    time.sleep(0.8)
     preprocess_hack('5')
 def open_b():
     preprocess_hack('3')
     print('Sent command: 3')
-    time.sleep(1)
+    time.sleep(0.8)
     preprocess_hack('6')
 def close_a():
     preprocess_hack('2')
     print('Sent command: 2')
-    time.sleep(1)
+    time.sleep(0.8)
     preprocess_hack('5')
 def close_b():
     preprocess_hack('4')
     print('Sent command: 4')
-    time.sleep(1)
+    time.sleep(0.8)
     preprocess_hack('6')
     
 
@@ -72,8 +74,12 @@ try:
                 time_object = datetime.datetime.combine(datetime.date.today(),time_process)
                 # if current_time == time:
                 if abs(current_time-time_object)<datetime.timedelta(minutes=1):
+                    system("say Reminder! Its time to take your medication")
                     print('Opening box A')
                     open_a()
+                    time.sleep(2)
+                    close_a()
+                    
 
         if date_difference.days % (int(data['medication2']['gap_days'])+1) == 0:
             print("medication 2 due for today")
@@ -83,7 +89,11 @@ try:
                 time_object = datetime.datetime.combine(datetime.date.today(),time_process)
                 # if current_time == time:
                 if abs(current_time-time_object)<datetime.timedelta(minutes=1):
+                    system("say Reminder! Its time to take your medication")
                     print('Opening box B')
+                    close_b()
+                    open_b()
+                    time.sleep(5)
                     open_b()
         time.sleep(40)
         
